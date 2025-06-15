@@ -42,10 +42,10 @@ template<typename T>
 std::string getType(const T& value) {
 	if constexpr (std::is_same_v<T, int>) return "int";
 	else if constexpr (std::is_same_v<T, std::string>) return "string";
-	else if constexpr (std::is_same_v<T, bool> return "bool";
-	else if constexpr (std::is_same_v<T, char> return "char";
+	else if constexpr (std::is_same_v<T, bool>) return "bool";
+	else if constexpr (std::is_same_v<T, char>) return "char";
 	else if constexpr (std::is_same_v<T, float>) return "float";
 	else if constexpr (std::is_pointer_v<T>) return "pointer";
 	else if constexpr (std::is_array_v<T>) return "array";
-	else return type(T).name();
+	else return typeid(T).name();
 }
