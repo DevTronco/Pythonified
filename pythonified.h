@@ -13,4 +13,6 @@ namespace pythonified{
 	template<typename T>
 	T input(const std::string& prompt = "");
 
+	template<typename T>
+	std::string getType(const T& value);
 }
