@@ -2,7 +2,7 @@
 #include <string>
 #include <typeinfo>
 
-#include "pythonified.h"
+#include "pythonified.hpp"
 
 using namespace pythonified;
 
@@ -48,4 +48,19 @@ std::string getType(const T& value) {
 	else if constexpr (std::is_pointer_v<T>) return "pointer";
 	else if constexpr (std::is_array_v<T>) return "array";
 	else return typeid(T).name();
+}
+
+template<typename T>
+int len(const T& container) {
+	if constexpr (requires{container.size()}) return static_cast<int>(container.size());
+	else static_assert(sizeof(T) == 0, "The type passed to len() doesnt have the size() method");
+}
+
+template<typename T, std::size_t N>
+int len(const T(&array)[N]) {
+	return static_cast<int>(N);
+}
+
+bool isTrue(const bool condition) {
+	return condition;
 }
