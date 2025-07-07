@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <string>
+#include <random>
+#include <type_traits>
 
 namespace pythonified{
 	template<typename T>
@@ -23,4 +25,9 @@ namespace pythonified{
 	int len(const T(&array)[N]);
 
 	bool isTrue(const bool condition);
+
+	namespace random {
+		template<typename T>
+		T randint(T min, T max);
+	}
 }
